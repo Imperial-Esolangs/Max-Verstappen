@@ -1,0 +1,31 @@
+cabal-version:      3.0
+name:               max-verstappen
+version:            0.1.0.0
+synopsis:           F1-themed esoteric programming language
+description:        A Max Verstappen inspired esolang with a small interpreter.
+license:            MIT
+author:             github.com/jeffkiddo
+build-type:         Simple
+
+
+common common-settings
+    -- Options to pass to GHC, in this case, we want to turn on warnings
+    ghc-options: -Wtabs -Wunused-binds -Wincomplete-patterns -Wmissing-signatures
+    -- Base language which the package is written in.
+    default-language: GHC2021
+    -- The range of GHC base library verisons that are supported
+    build-depends:    base >=4.13 && <5, containers, Cabal
+
+library
+    import:           common-settings
+    -- Modules exported by the library.
+    exposed-modules:  Parser, Execution, Functionality, Mappings
+    -- Directories containing source files.
+    hs-source-dirs:   src
+
+executable max-verstappen
+    import:           common-settings
+    main-is:          Main.hs
+    --other-modules:    insert your modules here if you wish!
+    hs-source-dirs:   app
+    build-depends:    ansi-terminal ^>=1.1.3, ansi-terminal ^>=1.1.3, max-verstappen, containers
